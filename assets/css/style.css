@@ -1,5 +1,5 @@
 body {
-    background-color: #ccc;
+    background-color: rgb(159, 152, 152);
 }
 
 .selections {
@@ -21,10 +21,11 @@ header {
 
     padding: 20px;
     min-height: 100px;
+
   }
   
   header>h1 {
-    color: red;
+    color: black;
     font-size: 3rem;
     align-items: center;
     text-align: center;
