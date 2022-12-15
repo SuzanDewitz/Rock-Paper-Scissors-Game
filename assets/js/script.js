@@ -1,42 +1,106 @@
-function start(){
-    document.getElementById("start").style.visibility="hidden";
-    document.getElementById("rock").style.visibility="visible";
-    document.getElementById("paper").style.visibility="visible";
-    document.getElementById("scissors").style.visibility="visible";
+const playBtn = document.querySelector('.intro button');
+const introScreen = document.querySelector('.intro');
+const match = document.querySelector('.match');
 
+let pScore = 0;
+let cScore = 0;
+
+
+playBtn.addEventListener('click', () => {
+    introScreen.classList.add('unactive');
+    match.classList.add('active');
+});
+
+//Play Match Function
+function playMatch(){
+    const options = document.querySelectorAll('.options button');
+    const computerOptions = ['rock', 'paper', 'scissors'];
+    const playerHand = document.querySelector('.player-hand');
+    const computerHand = document.querySelector('.computer-hand');
+    const hands = document.querySelectorAll('.hands img');
+
+    options.forEach(option => {
+        option.addEventListener('click', function(){
+            const computerNumber = Math.floor(Math.random() * 3);
+            const computerChoice = computerOptions[computerNumber];
+            
+            setTimeout(() => {
+                //call compare hads function
+                computerHands(this.textContent, computerChoice);
+                
+                playerHand.src = `./assets/${this.textContent}.png`;
+                computerHand.src = `./assets/${computerChoice}.png`;
+            }, 2000);
+
+            //Working on animation
+            playerHand.style.animation = 'shakePlayer 2s ease';
+            computerHand.style.animation = 'shakeComputer 2s ease';
+        });
+    });
+
+    hands.forEach(hand => {
+        hand.addEventListener('animationend', function(){
+            this.style.animation = "";
+        });
+    });
 }
+playMatch();
 
-clickedHand=["<img src='assets/images/rock.png'id='img1'>","<img src='assets/images/paper.png'id='img1'>","<img src='assets/images/scissors.png'id='img1'>" ];
-clickedRightHand=["<img src='assets/images/rock.png'id='img2'>","<img src='assets/images/paper.png'id='img2'>","<img src='assets/images/scissors.png'id='img2'>" ];
-function game(position){
-    document.getElementById("img1").style.animation='shakeLeft 1s 5 ease-in-out';
-    document.getElementById("img2").style.animation='shakeRight 1s 5 ease-in-out';
-
-    var random=Math.floor(Math.random()*3);
-    setTimeout(() => {
-        document.getElementById("hand2").innerHTML=clickedRightHand[random];
-        document.getElementById("hand1").innerHTML=clickedHand[position];
-    }, 5000);
-    setTimeout(() => {
-        if(random==position){
-            alert("MATCH DRAW !!");
-            window.location.reload();
-        }
-        else if(position==0 && random==2){
-            alert("YOU ARE WINNER , GOOD JOB !!");
-            window.location.reload();
-        }
-        else if(position==1 && random==0){
-            alert("YOU ARE WINNER , GOOD JOB !!");
-            window.location.reload();
-        }
-        else if(position==2 && random==1){
-            alert("YOU ARE WINNER , GOOD JOB !!");
-            window.location.reload();
+//Compare Hands Function
+function computerHands(playerChoice, computerChoice){
+    const winner = document.querySelector('.winner');
+    if(playerChoice === computerChoice){
+        winner.textContent = 'It is a Tie';
+        return;
+    }
+    if(playerChoice === 'rock'){// checking for rock
+        if(computerChoice === 'scissors'){
+            winner.textContent = 'Player Wins';
+            pScore++;
+            updateScore();
+            return;
         }
         else{
-            alert("COMPUTER IS WINNER,TRY NEXT TIME !!");
-            window.location.reload();
+            winner.textContent = 'Computer Wins';
+            cScore++;
+            updateScore();
+            return;
         }
-    }, 5500);
+    }
+    if(playerChoice === 'paper'){// checking for paper
+        if(computerChoice === 'scissors'){
+            winner.textContent = 'Computer Wins';
+            cScore++;
+            updateScore();
+            return;
+        }
+        else{
+            winner.textContent = 'Player Wins';
+            pScore++;
+            updateScore();
+            return;
+        }
+    }
+    if(playerChoice === 'scissors'){// checking for scissors
+        if(computerChoice === 'rock'){
+            winner.textContent = 'Computer Wins';
+            cScore++;
+            updateScore();
+            return;
+        }
+        else{
+            winner.textContent = 'Player Wins';
+            pScore++;
+            updateScore();
+            return;
+        }
+    }
+}
+
+//Score Function
+function updateScore(){
+    const playerScore = document.querySelector('.player-score p');
+    const computerScore = document.querySelector('.computer-score p');
+    playerScore.textContent = pScore;
+    computerScore.textContent = cScore;
 }

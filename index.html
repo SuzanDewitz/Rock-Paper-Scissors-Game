@@ -14,18 +14,46 @@
 <body>
 
     
-    <h1 id="heading">Rock Paper Scissors Game</h1>
-    <div id="hand1">
-        <img src="assets/images/rock.png" id="img1">
-    </div>
-    <div id="hand2">
-        <img src="assets/images/rock.png" id="img2">
-    </div>
+    <section>
+        <div class="score">
+          <div class="player-score">
+            <h2>Player</h2>
+            <p>0</p>
+          </div>
+          <div class="computer-score">
+            <h2>Computer</h2>
+            <p>0</p>
+          </div>
+        </div>
+  
+        <div class="intro">
+          <h1>Rock | Paper | Scissors</h1>
+          <button>Let's Play</button>
+        </div>
+  
+        <div class="match unactive">
+          <h2 class="winner">Choose an Option</h2>
+          <div class="hands">
 
-  <button type="button" onclick="game(0)" id="rock">ROCK</button>
-  <button type="button" onclick="game(1)" id="paper">PAPER</button>
-  <button type="button" onclick="game(2)" id="scissors">SCISSOR</button>
-  <button type="button" onclick="start()" id="start">START</button>
+
+
+        <img src="assets/images/rock.png" alt="" class="player-hand">
+        <img src="assets/images/rock.png" alt="" class="computer-hand">
+
+
+
+  </div>
+        <div class="options">
+          <button class="rock">rock</button>
+          <button class="paper">paper</button>
+          <button scissors>scissors</button>
+        </div>
+      </div>
+    </section>
+
+
+
+
 
     <script src="assets/js/script.js"></script>
 </body>
