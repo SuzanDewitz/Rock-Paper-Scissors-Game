@@ -12,18 +12,21 @@
     <title>Rock Paper Scissors Game</title>
 </head>
 <body>
-<header>
-    
-    <h1>Rock - Paper - Scissors - Game</h1>
-  </header>
 
-    <div class="selections">
-    <button class="selection" data-selection="rock">✊</button>
-    <button class="selection" data-selection="paper">✋</button>
-    <button class="selection" data-selection="scissors">✌</button>
-</div>
-<div class="results">
-</div>
+    
+    <h1 id="heading">Rock Paper Scissors Game</h1>
+    <div id="hand1">
+        <img src="assets/images/rock.png" id="img1">
+    </div>
+    <div id="hand2">
+        <img src="assets/images/rock.png" id="img1">
+    </div>
+
+  <button type="button" onclick="game(0)" id="rock">ROCK</button>
+  <button type="button" onclick="game(1)" id="paper">PAPER</button>
+  <button type="button" onclick="game(2)" id="scissors">SCISSOR</button>
+  <button type="button" onclick="start()" id="start">START</button>
+
     <script src="assets/js/script.js"></script>
 </body>
 </html>
