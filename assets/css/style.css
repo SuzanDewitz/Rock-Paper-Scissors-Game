@@ -24,7 +24,43 @@ h1{
     top: 20%;
     left: 52%;
 }
+#rock{
+    position: absolute;
+    left: 400px;
+    top: 75%;
+    visibility: hidden;
+}
+#paper{
+    position: absolute;
+    left: 560px;
+    top: 75%;
+    visibility: hidden;
+}
 
+#scissors{
+    position: absolute;
+    top: 75%;
+    left: 720px;
+    visibility: hidden;
+}
+button{
+    height: 80px;
+    width: 140px;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: orangered;
+    color: floralwhite;
+    border: solid 4px floralwhite;
+    border-radius: 44px;
+    cursor: pointer;
+}
+
+#start{
+    background-color: darkgreen;
+    position: absolute;
+    top: 75%;
+    left: 45%;
+}
 
 
 
